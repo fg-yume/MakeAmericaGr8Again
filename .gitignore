@@ -48,3 +48,6 @@ ExportedObj/
 *.userprefs
 *.pidb
 *.svd
+
+# Outputs and Intermediary directories/files
+[Bb]uilds/
