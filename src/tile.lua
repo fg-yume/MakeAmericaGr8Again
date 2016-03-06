@@ -1,3 +1,5 @@
+require "src.globals"
+
 local Tile = {}
 Tile.__index = Tile
 
@@ -7,16 +9,14 @@ setmetatable(Tile, {
 	end,
 })
 
-local screenWidth = love.graphics.getWidth()
-local screenHeight = love.graphics.getHeight()
 
 function Tile.new(x, y, numRows, numCols)
 	local self = setmetatable({}, Tile)
 
-	self.width = (screenWidth - numCols * 2) / numCols
+	self.width = screenWidth / (numCols - 2)
 	self.height = screenHeight / (numRows * 2)
 	self.units = {}
-	self.x = (x * self.width) - self.width/2
+	self.x = (x * self.width) - self.width
 	self.y = ((y * self.height) - self.height) + screenHeight/4
 
 	return self

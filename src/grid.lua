@@ -1,10 +1,8 @@
 -- @module Grid
 -- Requires
 local TileClass = require("src.tile")
+require ("src.globals")
 
--- consts
-local NUM_TILE_ROWS = 4
-local NUM_TILE_COLUMNS = 23
 
 -- Class
 local Grid = {}

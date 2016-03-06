@@ -1,50 +1,46 @@
-test = require("src.unit")
-gridClass = require("src.grid")
+unitCls = require("src.unit")
+gridCls = require("src.grid")
 enemyCls = require("src.enemy")
 turretCls = require("src.turret")
-spawnClass = require("src.spawner")
-
-test:setX(300)
-test:setY(150)
-test:setSpeed(300)
-x = 300
-y = 150
+spawnCls = require("src.spawner")
+require ("src.globals")
 bulletCls = require ("src.bullet")
-bullet = bulletCls(25, 35, 40)
 
-grid = gridClass.new()
-spawner = spawnClass.new()
+grid = gridCls.new()
+spawner = spawnCls.new()
 
--- unitClass = require("src.unit")
+
 
 -- test spawning units
 -- unitOne = unitClass.new(os.clock())
 -- unitTwo = unitClass.new(os.clock())
 -- unitThree = unitClass.new(os.clock())
-local enemy = enemyCls(0, 0, 10, 2, 1, 60, 5, 3, 99)
-local enemy2 = enemyCls(0, 0, 15, 2, 1, 60, 5, 3, 99)
-local turret = turretCls(0, 0, 38, 2, 2, 2, 50000)
+--local unit = unitCls(300, 150, 0, 0, 0, 0, (screenWidth / (numCols - 2)), (screenHeight / (numRows * 2)), yuzu)
+--local enemy = enemyCls(100, 100, 10, 2, 1, 60, 5, 3, 99)
+--local enemy2 = enemyCls(100, 200, 15, 2, 1, 60, 5, 3, 99)
+--local turret = turretCls(100, 300, 38, 2, 2, 2, 50000)
 
 local startClockTime = os.clock()
 
 
 function love.load()
 	yuzu = love.graphics.newImage("yuzu.jpg")
-	test:setImage(yuzu)
+	bullet = bulletCls(25, 35, 40)
+	unit = unitCls(300, 150, 0, 0, 0, 0, yuzu)
+	unit:setSpeed(40)
 end
+
 function love.update(dt)
 	test:update(dt)
 	spawner:update(dt, startClockTime)
+	unit:update(dt)
 end
 
 function love.draw()
 	love.graphics.setBackgroundColor(50, 50, 50)
 	grid:draw()
 	love.graphics.setColor(255, 255, 255) --reset color to white
-	test:draw()
-	enemy:draw(100, 100)
-	enemy2:draw(100, 200)
-	turret:draw(100,300)
+	unit:draw()
 
 	spawner:draw()
 

@@ -11,9 +11,9 @@ setmetatable(Turret, {
 })
 
 
-function Turret:_init(xValue, yValue, hp, damage, range, firerate, cost)
+function Turret:_init(xValue, yValue, hp, damage, range, firerate, image, cost)
 
-	Unit._init(self, xValue, yValue, hp, damage, range, firerate)
+	Unit._init(self, xValue, yValue, hp, damage, range, firerate, image)
 	self.cost = cost
 end
 
@@ -21,8 +21,8 @@ function Turret:getCost()
 	return self.cost
 end
 
-function Turret:draw(x, y)
-	love.graphics.print("Turret - HP: "..self.hp..", cost: "..self.cost, x, y)
+function Turret:draw()
+	love.graphics.print("Turret - HP: "..self.hp..", cost: "..self.cost, xValue, yValue)
 end
 
 return Turret

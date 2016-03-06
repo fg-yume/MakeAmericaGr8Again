@@ -1,3 +1,6 @@
+unit = require "unit"
+require ("src.globals")
+
 local GameManager = {}
 GameManager.__index = GameManager
 
@@ -7,10 +10,13 @@ setmetatable(GameManager, {
 	end,
 })
 
+local mouseX, mouseY
+local image = unit.getImage()
+
 function GameManager.new()
 	local self = setmetatable({}, GameManager)
 	
-	self.playerHealth = 23
+	self.playerHealth = 8
 	self.wallStrength = 0
 	
 	return self
@@ -35,7 +41,7 @@ function GameManager:reduceHealth()
 end
 
 function GameManager:update(dt)
-	--input logic
+	mouseX, mouseY = love.mouse.getPosition()
 	--collision detection
 end
 

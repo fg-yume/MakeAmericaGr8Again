@@ -9,7 +9,8 @@ setmetatable(Unit, {
 	end,
 })
 
-function Unit:_init(xValue, yValue, hp, damage, range, firerate)
+--xPos value, yPos value, health, attack damage, attack range, fire rate, scalex, scaley, image
+function Unit:_init(xValue, yValue, hp, damage, range, firerate, image)
 	
 	self.x = xValue
 	self.y = yValue
@@ -17,7 +18,7 @@ function Unit:_init(xValue, yValue, hp, damage, range, firerate)
 	self.damage = damage
 	self.range = range
 	self.firerate = firerate
-	self.image = nil
+	self.image = image
 
 end
 
@@ -70,7 +71,13 @@ function Unit:update(dt)
 end
 
 function Unit:draw()
-	love.graphics.draw(self.image, self.x, self.y)
+	local imgWidth = self.image:getWidth()
+	local imgHeight = self.image:getHeight()
+	local tileWidth = screenWidth / (NUM_TILE_COLUMNS - 2)
+	local tileHeight = screenHeight / (NUM_TILE_ROWS * 2)
+	local sx = tileWidth * .8 / imgWidth
+	local sy = tileHeight * .8 / imgHeight
+	love.graphics.draw(self.image, self.x, self.y, 0, sx, sy)
 end
 
 return Unit

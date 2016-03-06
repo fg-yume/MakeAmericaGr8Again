@@ -11,10 +11,10 @@ setmetatable(Enemy, {
 })
 
 
-function Enemy:_init(xValue, yValue, hp, damage, range, firerate, speed, tag)
+function Enemy:_init(xValue, yValue, hp, damage, range, firerate, image, speed, tag)
 	print("tag is " .. tag)
 
-	Unit._init(self, xValue, yValue, hp, damage, range, firerate)
+	Unit._init(self, xValue, yValue, hp, damage, range, firerate, image)
 	self.speed = speed
 	self.tag = tag*1000
 end
@@ -27,11 +27,11 @@ function Enemy:getTag()
 	return self.tag
 end
 
-function Enemy:draw(x, y)
-	love.graphics.print("Enemy - HP: "..self.hp..", speed: "..self.speed, self.x, self.y)
+function Enemy:update()
 end
 
-function Enemy:update()
+function Enemy:draw()
+	love.graphics.print("Enemy - HP: "..self.hp..", speed: "..self.speed, self.xValue, self.yValue)
 end
 
 return Enemy
