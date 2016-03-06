@@ -8,11 +8,12 @@ setmetatable(Bullet, {
 })
 
 
-function Bullet.new()
+function Bullet.new(damage, speed, lt)
 	local self = setmetatable({}, Bullet)
 
-	self.damage = 0
-	self.speed = 0
+	self.damage = damage
+	self.speed = speed
+	self.lifetime = lt
 
 	return self
 end
@@ -31,6 +32,14 @@ end
 
 function Bullet:setSpeed(spd)
 	self.speed = spd
+end
+
+function Bullet:getLifetime()
+	return self.lifetime
+end
+
+function Bullet:setLifetime(lt)
+	self.lifetime = lt
 end
 
 return Bullet

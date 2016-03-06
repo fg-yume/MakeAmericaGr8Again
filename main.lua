@@ -5,13 +5,12 @@ test:setY(150)
 test:setSpeed(300)
 x = 300
 y = 150
-bullet = require ("bullet")
+bulletCls = require ("bullet")
+bullet = bulletCls.new(25, 35, 40)
 
 function love.load()
 	yuzu = love.graphics.newImage("yuzu.jpg")
 	test:setImage(yuzu)
-	bullet:setDamage(20)
-	bullet:setSpeed(30)
 end
 function love.update(dt)
 	test:update(dt)
