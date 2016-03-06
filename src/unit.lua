@@ -1,24 +1,24 @@
-local Unit = {}
+Unit = {}
 Unit.__index = Unit
 
 setmetatable(Unit, {
 	__call = function(cls, ...)
-	return cls.new(...)
+	local self = setmetatable({}, cls)
+	self:_init(...)
+	return self
 	end,
 })
 
-function Unit.new(key)
-	local self = setmetatable({}, Unit)
-
-	print("key is " .. key)
+function Unit:_init(xValue, yValue, hp, damage, range, firerate)
 	
-	self.x = 0
-	self.y = 0
-	self.speed = 0
+	self.x = xValue
+	self.y = yValue
+	self.hp = hp
+	self.damage = damage
+	self.range = range
+	self.firerate = firerate
 	self.image = nil
-	self.tag = key*1000
-	
-	return self
+
 end
 
 function Unit:getX()
@@ -53,9 +53,6 @@ function Unit:setImage(imageValue)
 	self.image = imageValue
 end
 
-function Unit:getTag()
-	return self.tag
-end
 
 function Unit:update(dt)
 	if love.keyboard.isDown("left") then

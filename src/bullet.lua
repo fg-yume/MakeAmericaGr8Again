@@ -3,19 +3,17 @@ Bullet.__index = Bullet
 
 setmetatable(Bullet, {
 	__call = function(cls, ...)
-	return cls.new(...)
+	local self = setmetatable({}, cls)
+	self:_init(...)
+	return self
 	end,
 })
 
 
-function Bullet.new(damage, speed, lt)
-	local self = setmetatable({}, Bullet)
-
+function Bullet:_init(damage, speed, lt)
 	self.damage = damage
 	self.speed = speed
 	self.lifetime = lt
-
-	return self
 end
 
 function Bullet:getDamage()
