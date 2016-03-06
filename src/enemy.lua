@@ -28,7 +28,10 @@ function Enemy:getTag()
 end
 
 function Enemy:draw(x, y)
-	love.graphics.print("Enemy - HP: "..self.hp..", speed: "..self.speed, x, y)
+	love.graphics.print("Enemy - HP: "..self.hp..", speed: "..self.speed, self.x, self.y)
+end
+
+function Enemy:update()
 end
 
 return Enemy

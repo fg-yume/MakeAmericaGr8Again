@@ -2,6 +2,7 @@ test = require("src.unit")
 gridClass = require("src.grid")
 enemyCls = require("src.enemy")
 turretCls = require("src.turret")
+spawnClass = require("src.spawner")
 
 test:setX(300)
 test:setY(150)
@@ -12,6 +13,7 @@ bulletCls = require ("src.bullet")
 bullet = bulletCls(25, 35, 40)
 
 grid = gridClass.new()
+spawner = spawnClass.new()
 
 -- unitClass = require("src.unit")
 
@@ -23,6 +25,8 @@ local enemy = enemyCls(0, 0, 10, 2, 1, 60, 5, 3, 99)
 local enemy2 = enemyCls(0, 0, 15, 2, 1, 60, 5, 3, 99)
 local turret = turretCls(0, 0, 38, 2, 2, 2, 50000)
 
+local startClockTime = os.clock()
+
 
 function love.load()
 	yuzu = love.graphics.newImage("yuzu.jpg")
@@ -30,6 +34,7 @@ function love.load()
 end
 function love.update(dt)
 	test:update(dt)
+	spawner:update(dt, startClockTime)
 end
 
 function love.draw()
@@ -40,6 +45,8 @@ function love.draw()
 	enemy:draw(100, 100)
 	enemy2:draw(100, 200)
 	turret:draw(100,300)
+
+	spawner:draw()
 
 	love.graphics.print("Hello World", 400, 300)
 	love.graphics.print("Bullet Damage: "..bullet:getDamage()..", Bullet Speed "..bullet:getSpeed(), 500, 400)
