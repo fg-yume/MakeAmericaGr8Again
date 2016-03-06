@@ -1,8 +1,10 @@
+test = require("unit")
 x = 300
-y = 200
+y = 150
 
 function love.load()
 	yuzu = love.graphics.newImage("yuzu.jpg")
+	test:setImage(yuzu)
 end
 function love.update(dt)
 	if love.keyboard.isDown("left") then
@@ -17,7 +19,10 @@ function love.update(dt)
 	if love.keyboard.isDown("down") then
 		y = y + 60 * dt;
 	end
+	
+	test:setX(x)
+	test:setY(y)
 end
 function love.draw()
-	love.graphics.draw(yuzu, x, y)
+	love.graphics.draw(test:getImage(), test:getX(), test:getY())
 end
