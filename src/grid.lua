@@ -31,4 +31,10 @@ function Grid.new()
     return self
 end
 
+function Grid:draw()
+    for i, tileObj in ipairs(self.tiles) do
+        tileObj.draw()
+    end
+end
+
 return Grid
