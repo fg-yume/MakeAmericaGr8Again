@@ -3,8 +3,7 @@ test = require("unit")
 test:setX(300)
 test:setY(150)
 test:setSpeed(300)
-x = 300
-y = 150
+
 bullet = require ("bullet")
 
 function love.load()
