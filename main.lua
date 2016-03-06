@@ -33,7 +33,9 @@ function love.update(dt)
 end
 
 function love.draw()
-	--grid:draw()
+	love.graphics.setBackgroundColor(50, 50, 50)
+	grid:draw()
+	love.graphics.setColor(255, 255, 255) --reset color to white
 	test:draw()
 	enemy:draw(100, 100)
 	enemy2:draw(100, 200)

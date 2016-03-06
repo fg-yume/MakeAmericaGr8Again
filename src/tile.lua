@@ -7,14 +7,17 @@ setmetatable(Tile, {
 	end,
 })
 
-function Tile.new(x, y)
+local screenWidth = love.graphics.getWidth()
+local screenHeight = love.graphics.getHeight()
+
+function Tile.new(x, y, numRows, numCols)
 	local self = setmetatable({}, Tile)
 
-	self.width = love.graphics.getWidth() / 23
-	self.height = love.graphics.getHeight() / 5
+	self.width = (screenWidth - numCols * 2) / numCols
+	self.height = screenHeight / (numRows * 2)
 	self.units = {}
-	self.x = x * self.width
-	self.y = y * self.height
+	self.x = (x * self.width) - self.width/2
+	self.y = ((y * self.height) - self.height) + screenHeight/4
 
 	return self
 end
@@ -24,8 +27,16 @@ function Tile.insert(item)
 	table.insert(self.units, item)
 end
 
-function Tile:draw()
-	love.graphics.print(self.x..", "..self.y, self.x, self.y)
+function Tile:draw(drawWall)
+	if drawWall then
+		love.graphics.setColor(0, 0, 255)
+		love.graphics.rectangle("line", self.x, self.y, self.width, self.height, 10, 10)
+	else
+		love.graphics.setColor(169, 169, 169)
+		love.graphics.rectangle("fill", self.x, self.y, self.width, self.height, 10, 10)
+		love.graphics.setColor(0, 0, 255)
+		love.graphics.rectangle("line", self.x, self.y, self.width, self.height, 10, 10)
+	end
 end
 
 return Tile

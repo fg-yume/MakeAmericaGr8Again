@@ -24,7 +24,7 @@ function Grid.new()
     for i=1, NUM_TILE_COLUMNS do
         self.tiles[i] = {} -- new row
         for j=1, NUM_TILE_ROWS do
-            self.tiles[i][j] = TileClass.new(i, j)
+            self.tiles[i][j] = TileClass.new(i, j, NUM_TILE_ROWS, NUM_TILE_COLUMNS)
         end
     end
 
@@ -34,7 +34,11 @@ end
 function Grid:draw()
     for i=1,NUM_TILE_COLUMNS do
         for j=1, NUM_TILE_ROWS do
-            self.tiles[i][j]:draw()
+            if i >10 and i < 14 then
+                self.tiles[i][j]:draw(false)
+            else
+                self.tiles[i][j]:draw(true)
+            end
         end
     end
 end
