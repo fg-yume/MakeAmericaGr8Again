@@ -1,10 +1,10 @@
-test = require("unit")
+test = require("src.unit")
 
 test:setX(300)
 test:setY(150)
 test:setSpeed(300)
 
-bullet = require ("bullet")
+bullet = require ("src.bullet")
 
 function love.load()
 	yuzu = love.graphics.newImage("yuzu.jpg")
