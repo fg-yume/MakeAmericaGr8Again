@@ -7,13 +7,16 @@ setmetatable(Unit, {
 	end,
 })
 
-function Unit.new()
+function Unit.new(key)
 	local self = setmetatable({}, Unit)
+
+	print("key is " .. key)
 	
 	self.x = 0
 	self.y = 0
 	self.speed = 0
 	self.image = nil
+	self.tag = key*1000
 	
 	return self
 end
@@ -48,6 +51,10 @@ end
 
 function Unit:setImage(imageValue)
 	self.image = imageValue
+end
+
+function Unit:getTag()
+	return self.tag
 end
 
 function Unit:update(dt)
