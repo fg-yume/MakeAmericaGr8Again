@@ -24,19 +24,19 @@ function Spawner.new()
     self.currentUnits = {}
 
     -- Fill up spawner
-    table.insert(self.spawnTimers, 10)
+    table.insert(self.spawnTimers, 10 * love.timer.getDelta())
 
     self.spawnUnits[1] = {}
     table.insert(self.spawnUnits[1],
-        Enemy( 100, 100, 10, 10, 5, 10, 4, ( os.clock() + counter ) * 1000 ))
+        Enemy( 100, 100, 10, 10, 5, 10, yuzu, 4, ( os.clock() + counter ) * 1000 ))
 
     counter = counter + .001
 
-    table.insert(self.spawnTimers, 15)
+    table.insert(self.spawnTimers, 15 * love.timer.getDelta())
 
     self.spawnUnits[2] = {}
     table.insert(self.spawnUnits[2],
-        Enemy( 100, 200, 10, 10, 5, 10, 4, ( os.clock() + counter ) * 1000 ))
+        Enemy( 100, 200, 10, 10, 5, 10, yuzu, 4, ( os.clock() + counter ) * 1000 ))
 
     return self
 end

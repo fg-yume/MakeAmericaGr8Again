@@ -24,14 +24,12 @@ local startClockTime = os.clock()
 
 
 function love.load()
-	yuzu = love.graphics.newImage("yuzu.jpg")
 	bullet = bulletCls(25, 35, 40)
 	unit = unitCls(300, 150, 0, 0, 0, 0, yuzu)
 	unit:setSpeed(40)
 end
 
 function love.update(dt)
-	test:update(dt)
 	spawner:update(dt, startClockTime)
 	unit:update(dt)
 end
@@ -46,6 +44,7 @@ function love.draw()
 
 	love.graphics.print("Hello World", 400, 300)
 	love.graphics.print("Bullet Damage: "..bullet:getDamage()..", Bullet Speed "..bullet:getSpeed(), 500, 400)
+	love.graphics.print("Elapsed TIme: "..os.clock() - startClockTime, 800, 500)
 	--love.graphics.print(os.clock(), 200,200)
 	--love.graphics.print("one: " .. unitOne:getTag(), 100, 10)
 	--love.graphics.print("two: " .. unitTwo:getTag(), 100, 40)

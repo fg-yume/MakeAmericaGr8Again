@@ -27,8 +27,8 @@ function Tile.insert(item)
 	table.insert(self.units, item)
 end
 
-function Tile:draw(drawWall)
-	if drawWall then
+function Tile:draw(drawLane)
+	if drawLane then
 		love.graphics.setColor(0, 0, 255)
 		love.graphics.rectangle("line", self.x, self.y, self.width, self.height, 10, 10)
 	else

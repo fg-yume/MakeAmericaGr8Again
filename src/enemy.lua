@@ -31,7 +31,14 @@ function Enemy:update()
 end
 
 function Enemy:draw()
-	love.graphics.print("Enemy - HP: "..self.hp..", speed: "..self.speed, self.xValue, self.yValue)
+	local imgWidth = self.image:getWidth()
+	local imgHeight = self.image:getHeight()
+	local tileWidth = screenWidth / (NUM_TILE_COLUMNS - 2)
+	local tileHeight = screenHeight / (NUM_TILE_ROWS * 2)
+	local sx = tileWidth * .8 / imgWidth
+	local sy = tileHeight * .8 / imgHeight
+	love.graphics.draw(self.image, self.x, self.y, 0, sx, sy)
+	--love.graphics.print("Enemy - HP: "..self.hp..", speed: "..self.speed, self.xValue, self.yValue)
 end
 
 return Enemy
