@@ -15,8 +15,7 @@ end
 local Bullet = require 'TestClass'
 
 function love.draw()
-	love.graphics.draw(test:getImage(), test:getX(), test:getY())
-	love.graphics.draw(yuzu, x, y)
+	test:draw()
 
     local a = 5
     if a == 5 then
@@ -26,6 +25,4 @@ function love.draw()
 	end
 
 	Bullet:init(0,0)
-	
-	test:draw()
 end
