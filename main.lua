@@ -33,6 +33,7 @@ function love.update(dt)
 end
 
 function love.draw()
+	--grid:draw()
 	test:draw()
 	enemy:draw(100, 100)
 	enemy2:draw(100, 200)

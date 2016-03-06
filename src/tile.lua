@@ -10,10 +10,11 @@ setmetatable(Tile, {
 function Tile.new(x, y)
 	local self = setmetatable({}, Tile)
 
-	self.size = love.graphics.getWidth() / 23 --10 for each side of the lanes, 3 for the wall
+	self.width = love.graphics.getWidth() / 23
+	self.height = love.graphics.getHeight() / 5
 	self.units = {}
-	self.x = x * self.size
-	self.y = y * self.size
+	self.x = x * self.width
+	self.y = y * self.height
 
 	return self
 end

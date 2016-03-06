@@ -24,7 +24,7 @@ function Grid.new()
     for i=1, NUM_TILE_COLUMNS do
         self.tiles[i] = {} -- new row
         for j=1, NUM_TILE_ROWS do
-            self.tiles[i][j] = TileClass.new()
+            self.tiles[i][j] = TileClass.new(i, j)
         end
     end
 
@@ -32,8 +32,10 @@ function Grid.new()
 end
 
 function Grid:draw()
-    for i, tileObj in ipairs(self.tiles) do
-        tileObj.draw()
+    for i=1,NUM_TILE_COLUMNS do
+        for j=1, NUM_TILE_ROWS do
+            self.tiles[i][j]:draw()
+        end
     end
 end
 
